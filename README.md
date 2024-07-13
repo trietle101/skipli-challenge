@@ -69,7 +69,3 @@ Before running this application, ensure you have the following installed on your
 - `server/`: Contains the Express.js server code.
 - `client/`: Contains the Create React App client-side code.
 ```
-
-This README provides clear instructions for setting up and running both the client and server components of your application. It includes information on prerequisites, installation steps, how to start both the server and client, and a brief overview of the folder structure.
-
-Would you like me to explain or modify any part of this README?
