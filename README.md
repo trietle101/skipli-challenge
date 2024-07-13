@@ -1,4 +1,3 @@
-```markdown
 # Skipli Challenge - Client and Server Setup
 
 This repository contains a sample application with a client-side using Create React App and a server-side using Express.js.
@@ -68,4 +67,4 @@ Before running this application, ensure you have the following installed on your
 
 - `server/`: Contains the Express.js server code.
 - `client/`: Contains the Create React App client-side code.
-```
+
