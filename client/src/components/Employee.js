@@ -58,36 +58,6 @@ function Employee(props) {
   const [editData, setEditData] = useState(null);
   const [form] = Form.useForm();
 
-  // const fetchEmployee = async () => {
-  //   const fetchedEmployee = [];
-  //   const token = JSON.parse(localStorage.getItem("userCreadentials")).token;
-  //   try {
-  //     await axios
-  //       .get("http://localhost:3001/api/users/getAll", {
-  //         headers: {
-  //           "Authorization": `Bearer ${token}`,
-  //           "Content-Type": "application/json"
-  //         }
-  //       })
-  //       .then((response) =>
-  //         response.data.map((data) => fetchedEmployee.push(data))
-  //       );
-  //     setEmployeeData(fetchedEmployee);
-  //   } catch (error) {
-  //     if (error.response) {
-  //       // The request was made and the server responded with a status code
-  //       // that falls out of the range of 2xx
-  //       toast.error(error.response.data.error);
-  //     } else if (error.request) {
-  //       // The request was made but no response was received
-  //       toast.error(error.request);
-  //     } else {
-  //       // Something happened in setting up the request that triggered an Error
-  //       // toast.error("Error:", error.message);
-  //       toast.error(error.message);
-  //     }
-  //   }
-  // };
   const editEmployee = async (id, values) => {
     const fetchedEmployee = [];
     const token = JSON.parse(localStorage.getItem("userCreadentials")).token;
@@ -139,15 +109,10 @@ function Employee(props) {
         setEmployeeData(fetchedEmployee);
       } catch (error) {
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
           toast.error(error.response.data.error);
         } else if (error.request) {
-          // The request was made but no response was received
           toast.error(error.request);
         } else {
-          // Something happened in setting up the request that triggered an Error
-          // toast.error("Error:", error.message);
           toast.error(error.message);
         }
       }
@@ -163,6 +128,7 @@ function Employee(props) {
       form.setFieldsValue(editData);
     }
   };
+
   //Handle open/close modals
   const showModal = (type, rec) => {
     if (type === "new") setIsModalNewOpen(true);
@@ -173,10 +139,12 @@ function Employee(props) {
       setIsModalEditOpen(true);
     }
   };
+
   const closeModal = (type) => {
     if (type === "new") setIsModalNewOpen(false);
     else if (type === "edit") setIsModalEditOpen(false);
   };
+
   const handleCancel = (type) => {
     if (type === "new") setIsModalNewOpen(false);
     else if (type === "edit") {
@@ -204,15 +172,10 @@ function Employee(props) {
       setEmployeeData(fetchedEmployee);
     } catch (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         toast.error(error.response.data.error);
       } else if (error.request) {
-        // The request was made but no response was received
         toast.error(error.request);
       } else {
-        // Something happened in setting up the request that triggered an Error
-        // toast.error("Error:", error.message);
         toast.error(error.message);
       }
     }

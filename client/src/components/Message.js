@@ -18,9 +18,6 @@ function Message(props) {
   const getCurrentChatReceiver = (val) => {
     setCurrentChatReceiver(val);
     socket.emit("join_room", room);
-    // socket.on("message", (message) => {
-    //   setCurrentChat([...currentChat, message]);
-    // });
   };
   useEffect(() => {
     setEmployeeData(props.employeeData);

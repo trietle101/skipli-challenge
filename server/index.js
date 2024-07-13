@@ -65,12 +65,13 @@ function authenticateToken(req, res, next) {
 const transporter = nodemailer.createTransport({
   host: "live.smtp.mailtrap.io",
   port: 587,
-  secure: false, // Use `true` for port 465, `false` for all other ports
+  secure: false,
   auth: {
     user: "api",
     pass: process.env.NODEMAILER_PASSWORD
   }
 });
+//Send OTP via email
 async function sendMail(email, otp) {
   // send mail with defined transport object
   const info = await transporter.sendMail({
@@ -84,6 +85,8 @@ async function sendMail(email, otp) {
   console.log("Message sent: %s", info.messageId);
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
+
+//Send login to new added employee via email
 async function sendMailLogin(email) {
   // send mail with defined transport object
   const info = await transporter.sendMail({
@@ -94,7 +97,8 @@ async function sendMailLogin(email) {
     html: `<p>Our admin have just created your account, <a href="http://localhost:3000/employee/login">click here</a> to login</p>` // html body
   });
 }
-//User enters phone number
+
+//Login api for admin
 app.post("/api/login", async (req, res) => {
   const { phoneNumber } = req.body;
   phoneNumbers = phoneNumber;
@@ -169,6 +173,7 @@ app.post("/api/verify", async (req, res) => {
   }
 });
 
+//Get all employee data
 app.get("/api/users/getAll", authenticateToken, async (req, res) => {
   try {
     const usersSnapshot = await db.collection("users").get();
@@ -188,6 +193,7 @@ app.get("/api/users/getAll", authenticateToken, async (req, res) => {
   }
 });
 
+//Add new employee
 app.post("/api/users/add", authenticateToken, async (req, res) => {
   try {
     const { phone_number, name, email } = req.body;
@@ -261,13 +267,6 @@ app.put("/api/users/edit/:userId", authenticateToken, async (req, res) => {
       ...updateData
     });
 
-    // Fetch the updated user data
-    // const updatedDoc = await userRef.get();
-    // const updatedUser = {
-    //   id: updatedDoc.id,
-    //   ...updatedDoc.data()
-    // };
-
     const usersSnapshot = await db.collection("users").get();
     const updatedUser = [];
 
@@ -284,6 +283,7 @@ app.put("/api/users/edit/:userId", authenticateToken, async (req, res) => {
     res.status(500).json({ error: "Failed to update user" });
   }
 });
+
 app.delete("/api/users/delete/:userId", authenticateToken, async (req, res) => {
   try {
     const { userId } = req.params;
@@ -316,6 +316,7 @@ app.delete("/api/users/delete/:userId", authenticateToken, async (req, res) => {
   }
 });
 
+//Login api for employee
 app.post("/api/employee/login", async (req, res) => {
   const { email } = req.body;
   emailAddress = email;

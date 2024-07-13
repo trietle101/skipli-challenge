@@ -27,8 +27,6 @@ function MessageList(props) {
                 <UserOutlined />
                 <p>
                   <strong>{employee.name}</strong>
-                  {/* <br />
-                <span>Hi, how are you today?</span> */}
                 </p>
               </div>
             ))
