@@ -1,0 +1,401 @@
+$btn-primary: #0c1779;
+
+@mixin flex($direction, $justify) {
+  flex-direction: $direction;
+  display: flex;
+  justify-content: $justify;
+  align-items: center;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+/////////////////// PAGES ////////////////////
+.login {
+  background-color: rgba(54, 88, 128, 0.589);
+  width: 23vw;
+  min-height: 55vh;
+  @include flex(column, center);
+  border-radius: 5%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 300rem;
+  &--container {
+    @include flex(column, center);
+    width: 75%;
+    min-height: 80%;
+    h1 {
+      font-size: 37rem;
+      color: white;
+      margin-top: 0;
+      margin-bottom: 10rem;
+    }
+    p {
+      color: rgba(255, 255, 255, 0.664);
+      font-size: 14rem;
+      margin-top: 0;
+      margin-bottom: 50rem;
+    }
+    input {
+      margin-bottom: 20rem;
+      background-color: transparent !important;
+      color: white !important;
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+      font-size: 16rem;
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.664);
+      }
+    }
+    button {
+      margin-bottom: 10rem;
+      font-weight: bolder;
+    }
+    .ant-otp {
+      width: 100%;
+    }
+    a {
+      color: #006aff;
+    }
+  }
+}
+.otp {
+  .resend {
+    width: 100%;
+    display: flex;
+    p {
+      color: rgba(255, 255, 255, 0.664);
+      font-size: 14rem;
+      margin-bottom: 0;
+    }
+    p:last-child {
+      font-size: 14rem;
+      margin-left: 3rem;
+      color: #006aff;
+      text-decoration: underline;
+    }
+  }
+}
+.home {
+  height: 95vh;
+  width: 90vw;
+  .wrapper {
+    margin-top: 40rem;
+    display: flex;
+    justify-content: space-between;
+    max-height: 80%;
+    .content {
+      width: 84.5%;
+      min-height: 70vh;
+      max-height: fit-content;
+      border-radius: 8px;
+      background-color: rgba(13, 21, 31, 0.507);
+    }
+  }
+}
+
+////////////////////// COMPONENTS ///////////////////
+.header {
+  &--container {
+    @include flex(row, space-between);
+    h1 {
+      font-size: 32rem;
+      color: white;
+      margin-top: 0;
+      margin-bottom: 10rem;
+    }
+    .btns {
+      @include flex(row, center);
+      gap: 20rem;
+      .ant-dropdown-open,
+      .ant-btn-default {
+        background-color: transparent !important;
+        border: none;
+      }
+      span {
+        font-size: 26rem;
+        font-weight: 600;
+        color: white;
+        &:hover {
+          color: rgba(161, 161, 161, 0.904);
+        }
+      }
+      h3 {
+        font-size: 22rem;
+        color: white;
+      }
+    }
+  }
+}
+.ant-dropdown-menu {
+  background-color: rgba(13, 21, 31, 0.507) !important;
+  li {
+    color: white !important;
+    font-size: 16rem !important;
+    &:hover {
+      background-color: rgba(153, 153, 153, 0.404) !important;
+    }
+  }
+}
+.nav {
+  width: 13%;
+  height: 20%;
+  &--container {
+    height: 100%;
+    ul {
+      height: 100%;
+      border-radius: 8px;
+      // background-color: rgba(13, 21, 31, 0.507);
+      background-color: transparent;
+      li {
+        font-size: 16rem;
+      }
+      .ant-menu-item-selected {
+        background-color: $btn-primary;
+      }
+    }
+  }
+}
+.employee {
+  margin: 10rem;
+  height: 100%;
+  &--container {
+    .ant-divider {
+      color: white !important;
+      height: 20rem;
+    }
+    h1 {
+      margin: 0;
+      padding: 20rem 0 30rem 30rem;
+      font-size: 36rem;
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.158);
+    }
+    .header {
+      @include flex(row, space-between);
+      margin: 0;
+      padding: 20rem 10rem 20rem 50rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.158);
+      h2 {
+        font-size: 24rem;
+        color: white;
+        margin: 0;
+      }
+    }
+    .ant-table-wrapper {
+      margin: auto;
+      width: 100%;
+      .ant-table {
+        border-radius: 8rem;
+        margin-top: 10rem;
+        background-color: rgba(153, 153, 153, 0.116);
+        table {
+          text-align: center;
+          color: white;
+          .ant-table-thead {
+            th {
+              color: white;
+              font-weight: bolder;
+              background-color: transparent !important;
+              text-align: center;
+            }
+          }
+          .ant-table-row {
+            td {
+              border-bottom: none !important;
+              border-top: 1px solid rgba(255, 255, 255, 0.158) !important;
+            }
+            &:hover {
+              background-color: rgba(153, 153, 153, 0.116) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.message {
+  height: 100%;
+  width: 100%;
+  &--container {
+    @include flex(row, space-between);
+    height: 100%;
+  }
+}
+.messagelist {
+  background-color: #0035802d;
+  width: 26%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: scroll;
+  &--container {
+    h1 {
+      margin: 0;
+      padding: 20rem 0 30rem 30rem;
+      font-size: 36rem;
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.158);
+    }
+    .item-list {
+      .active {
+        background-color: rgba(255, 255, 255, 0.158) !important;
+      }
+      .item {
+        @include flex(row, space-between);
+        margin: 5rem;
+        padding: 20rem 10rem 20rem 20rem;
+        border-radius: 20rem;
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.041);
+        }
+        .anticon-user {
+          font-size: 26rem;
+          color: white;
+          margin: 0;
+          padding: 20rem;
+          border-radius: 50%;
+          background-color: rgb(74, 85, 94);
+        }
+        h2 {
+          font-size: 24rem;
+          color: white;
+          margin: 0;
+        }
+        p {
+          width: 75%;
+          font-size: 16rem;
+          color: white;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+.chatbox {
+  background-color: #0035802d;
+  width: 73.3%;
+  height: 100%;
+  border-radius: 8px;
+  &--container {
+    // position: relative;
+    height: 100%;
+    .header {
+      height: 7%;
+      @include flex(row, space-between);
+      margin: 0;
+      padding: 10rem 10rem 10rem 20rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.158);
+      .anticon-user {
+        font-size: 20rem;
+        color: white;
+        margin: 0;
+        padding: 15rem;
+        border-radius: 50%;
+        background-color: rgb(74, 85, 94);
+      }
+      h1 {
+        font-size: 24rem;
+        color: white;
+        margin: 0;
+        width: 93%;
+      }
+    }
+    .chats {
+      height: 78%;
+      margin: 10rem;
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 7rem;
+      overflow: scroll;
+    }
+    .inputs {
+      height: 7%;
+      margin: 10rem;
+      width: 98%;
+      // position: absolute;
+      // bottom: 0;
+      @include flex(row, space-between);
+      gap: 10rem;
+      .ant-form-item {
+        width: 95%;
+        margin: 0;
+        input {
+          background-color: rgba(255, 255, 255, 0.158);
+          border: none;
+          border-radius: 18px;
+          padding: 10rem;
+          color: white;
+          font-size: 14rem;
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.541);
+          }
+        }
+      }
+    }
+  }
+}
+.mymessage {
+  width: 100%;
+  min-height: 56rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  &--container {
+    // float: right;
+    padding: 10rem 10rem 10rem 15rem;
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 17rem;
+    border-top-left-radius: 20rem;
+    border-bottom-left-radius: 20rem;
+    max-width: 50%;
+    background-color: #1677ff;
+    p {
+      font-size: 14rem;
+      color: white;
+      margin: 0;
+      word-wrap: break-word;
+    }
+  }
+  &--info {
+    padding-right: 5rem;
+    font-size: 12rem;
+    color: rgba(255, 255, 255, 0.493);
+    margin: 0;
+    word-wrap: break-word;
+  }
+}
+.theirmessage {
+  width: 100%;
+  min-height: 56rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  &--container {
+    // float: left;
+    padding: 10rem 15rem 10rem 10rem;
+    border-top-left-radius: 3rem;
+    border-bottom-left-radius: 17rem;
+    border-top-right-radius: 20rem;
+    border-bottom-right-radius: 20rem;
+    max-width: 50%;
+    background-color: rgb(74, 85, 94);
+    p {
+      font-size: 14rem;
+      color: white;
+      margin: 0;
+      word-wrap: break-word;
+    }
+  }
+  &--info {
+    padding-left: 5rem;
+    font-size: 12rem;
+    color: rgba(255, 255, 255, 0.493);
+    margin: 0;
+    word-wrap: break-word;
+  }
+}
